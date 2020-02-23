@@ -17,7 +17,7 @@ public class NewBookForm {
 	@Size(max = 50)
 	private String subTitle;
 	@Min(20)
-	private BigDecimal preco;
+	private BigDecimal price;
 	@NotBlank
 	private String describe;
 	@NotBlank
@@ -30,11 +30,11 @@ public class NewBookForm {
 	private MultipartFile img;
 
 	public NewBookForm(@NotBlank @Size(max = 100) String title, @NotBlank @Size(max = 50) String subTitle,
-			@Min(20) BigDecimal preco, @NotBlank String describe, @NotBlank String summary, @Min(100) int pages,
+			@Min(20) BigDecimal price, @NotBlank String describe, @NotBlank String summary, @Min(100) int pages,
 			@NotBlank String isbn, @NotBlank MultipartFile img) {
 		this.title = title;
 		this.subTitle = subTitle;
-		this.preco = preco;
+		this.price = price;
 		this.describe = describe;
 		this.summary = summary;
 		this.pages = pages;
@@ -58,12 +58,12 @@ public class NewBookForm {
 		this.subTitle = subTitle;
 	}
 
-	public BigDecimal getPreco() {
-		return preco;
+	public BigDecimal getPrice() {
+		return price;
 	}
 
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 
 	public String getDescribe() {
@@ -104,6 +104,10 @@ public class NewBookForm {
 
 	public void setImg(MultipartFile img) {
 		this.img = img;
+	}
+
+	public Book getBook() {
+		return new Book(title,subTitle,price,describe, summary, pages, isbn, "https://s3/img");
 	}
 
 }

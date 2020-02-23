@@ -2,8 +2,8 @@ package com.devroods.newbookcasadocodigo.book;
 
 import javax.validation.Valid;
 
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
  * BookController
  */
 @RestController
-@RequestMapping("/")
+@RequestMapping("/books")
 public class BookController {
 
-  @PostMapping()
+  @PostMapping("/post")
   public void putBook(@Valid NewBookForm form) {
-
+    Book book = form.getBook();
   }
   
 }
