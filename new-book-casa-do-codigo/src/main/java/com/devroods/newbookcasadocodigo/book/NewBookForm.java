@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -26,8 +27,12 @@ public class NewBookForm {
 	private int pages;
 	@NotBlank
 	private String isbn;
-	@NotBlank
+	@NotNull
 	private MultipartFile img;
+	@NotNull
+	private Long authorId;
+	
+
 
 	public NewBookForm(@NotBlank @Size(max = 100) String title, @NotBlank @Size(max = 50) String subTitle,
 			@Min(20) BigDecimal price, @NotBlank String describe, @NotBlank String summary, @Min(100) int pages,
@@ -108,6 +113,14 @@ public class NewBookForm {
 
 	public Book getBook() {
 		return new Book(title,subTitle,price,describe, summary, pages, isbn, "https://s3/img");
+	}
+
+	public Long getAuthorId() {
+		return authorId;
+	}
+
+	public void setAuthorId(Long authorId) {
+		this.authorId = authorId;
 	}
 
 }
